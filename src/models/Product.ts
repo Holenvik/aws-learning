@@ -7,9 +7,18 @@ export const ProductSchema = Yup.object({
   price: Yup.number().positive().required().defined().default(0),
 });
 
+export const CarSchema = Yup.object({
+  id: Yup.string(),
+  description: Yup.string().required(),
+  brand: Yup.string().required(),
+  name: Yup.string().required(),
+  price: Yup.number().required(),
+});
+
 export const AvailableProductSchema = ProductSchema.shape({
   count: Yup.number().integer().min(0).required().defined().default(0),
 });
 
 export type Product = Yup.InferType<typeof ProductSchema>;
 export type AvailableProduct = Yup.InferType<typeof AvailableProductSchema>;
+export type Car = Yup.InferType<typeof CarSchema>;

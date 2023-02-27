@@ -1,6 +1,6 @@
 import axios, { AxiosError } from "axios";
 import API_PATHS from "~/constants/apiPaths";
-import { AvailableProduct } from "~/models/Product";
+import { AvailableProduct, Car } from "~/models/Product";
 import { useQuery, useQueryClient, useMutation } from "react-query";
 import React from "react";
 
@@ -64,4 +64,11 @@ export function useDeleteAvailableProduct() {
       },
     })
   );
+}
+
+export function useProducts() {
+  return useQuery<{ cars: Car[] }, AxiosError>("products", async () => {
+    const res = await axios.get<{ cars: Car[] }>(`${API_PATHS.bff}/products`);
+    return res.data;
+  });
 }
