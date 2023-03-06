@@ -10,9 +10,10 @@ export const ProductSchema = Yup.object({
 export const CarSchema = Yup.object({
   id: Yup.string(),
   description: Yup.string().required(),
-  brand: Yup.string().required(),
-  name: Yup.string().required(),
+  title: Yup.string().required(),
   price: Yup.number().required(),
+  count: Yup.number().required(),
+  image: Yup.string(),
 });
 
 export const AvailableProductSchema = ProductSchema.shape({
