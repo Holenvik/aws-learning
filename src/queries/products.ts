@@ -67,8 +67,8 @@ export function useDeleteAvailableProduct() {
 }
 
 export function useProducts() {
-  return useQuery<{ cars: Car[] }, AxiosError>("products", async () => {
-    const res = await axios.get<{ cars: Car[] }>(`${API_PATHS.bff}/products`);
-    return res.data;
+  return useQuery<Car[], AxiosError>("products", async () => {
+    const res = await axios.get<{ data: Car[] }>(`${API_PATHS.bff}/products`);
+    return res.data.data;
   });
 }
